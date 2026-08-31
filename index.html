@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Gastro360 | Control Gastronómico</title>
+<title>Gastro360 | Control Gastronómico Premium</title>
 
 <style>
 :root{
@@ -29,6 +29,7 @@ body{
     background:var(--bg);
     color:var(--text);
     font-family:Inter,"Segoe UI",Arial,sans-serif;
+    overflow-x:hidden;
 }
 
 /* =========================
@@ -45,6 +46,7 @@ body{
     border-right:1px solid var(--line);
     z-index:20;
     transition:.25s;
+    overflow-y:auto;
 }
 
 .sidebar.collapsed{
@@ -63,13 +65,14 @@ body{
 .brandmark{
     width:45px;
     height:45px;
-    border:1px solid var(--gold);
+    border:2px solid var(--gold);
     border-radius:9px;
     display:grid;
     place-items:center;
     color:var(--gold);
     font-size:22px;
     font-weight:800;
+    flex-shrink:0;
 }
 
 .brandname{
@@ -101,6 +104,16 @@ body{
     background:var(--panel);
     color:white;
     cursor:pointer;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:14px;
+    transition:.2s;
+}
+
+.toggle:hover{
+    background:var(--gold);
+    color:#181b1d;
 }
 
 .nav{
@@ -122,6 +135,8 @@ body{
     font-size:11px;
     cursor:pointer;
     margin:2px 0;
+    transition:.2s;
+    font-weight:500;
 }
 
 .nav button:hover{
@@ -131,15 +146,17 @@ body{
 
 .nav button.active{
     background:#2a2f32;
-    color:white;
+    color:var(--gold2);
     border-left:3px solid var(--gold);
     padding-left:9px;
+    font-weight:600;
 }
 
 .ico{
     width:21px;
     text-align:center;
     font-size:15px;
+    flex-shrink:0;
 }
 
 .sidebar.collapsed .brandname,
@@ -193,6 +210,12 @@ body{
     display:flex;
     align-items:center;
     gap:7px;
+    transition:.2s;
+}
+
+.search:focus-within{
+    border-color:var(--gold);
+    background:#2a2f32;
 }
 
 .search input{
@@ -202,6 +225,10 @@ body{
     color:white;
     width:100%;
     font-size:11px;
+}
+
+.search input::placeholder{
+    color:#666;
 }
 
 .topright{
@@ -216,11 +243,12 @@ body{
     width:33px;
     height:33px;
     border-radius:50%;
-    background:#343a3e;
+    background:linear-gradient(135deg, var(--gold), var(--gold2));
     display:grid;
     place-items:center;
-    color:white;
+    color:#181b1d;
     font-weight:700;
+    font-size:12px;
 }
 
 /* =========================
@@ -283,6 +311,7 @@ h1{
 .section-title h2{
     font-size:13px;
     margin:0;
+    font-weight:600;
 }
 
 .section-title span{
@@ -305,23 +334,33 @@ h1{
     border:1px solid var(--line);
     border-radius:7px;
     padding:15px;
+    transition:.2s;
+}
+
+.kpi:hover{
+    border-color:var(--gold);
+    background:var(--panel2);
 }
 
 .kpi label{
     font-size:9px;
     color:var(--muted);
+    font-weight:500;
 }
 
 .kpi strong{
     display:block;
     font-size:23px;
     margin-top:7px;
+    color:var(--gold2);
+    font-weight:700;
 }
 
 .trend{
     font-size:9px;
     color:var(--green);
     margin-top:6px;
+    font-weight:500;
 }
 
 .trend.down{
@@ -357,6 +396,11 @@ h1{
     background:var(--panel);
     border:1px solid var(--line);
     border-radius:7px;
+    transition:.2s;
+}
+
+.target:hover{
+    border-color:var(--gold);
 }
 
 .target-top{
@@ -370,6 +414,8 @@ h1{
     display:block;
     font-size:17px;
     margin:8px 0 4px;
+    color:var(--gold2);
+    font-weight:700;
 }
 
 .progress{
@@ -382,8 +428,9 @@ h1{
 .progress i{
     display:block;
     height:100%;
-    background:var(--gold);
+    background:linear-gradient(90deg, var(--gold), var(--gold2));
     border-radius:10px;
+    transition:.3s;
 }
 
 .target small{
@@ -407,6 +454,7 @@ h1{
 .card h3{
     font-size:13px;
     margin:0;
+    font-weight:600;
 }
 
 .card p{
@@ -430,17 +478,24 @@ h1{
     border:1px solid var(--line);
     border-radius:6px;
     padding:11px;
+    transition:.2s;
+}
+
+.mini:hover{
+    border-color:var(--gold);
 }
 
 .mini label{
     font-size:8px;
     color:var(--muted);
+    font-weight:500;
 }
 
 .mini strong{
     display:block;
     font-size:17px;
     margin-top:5px;
+    font-weight:700;
 }
 
 .ok{
@@ -467,12 +522,21 @@ h1{
     padding:9px 2px;
     border-top:1px solid #33383b;
     font-size:9px;
+    transition:.2s;
+}
+
+.row:hover{
+    background:#2a2f32;
+    border-radius:4px;
 }
 
 .row.header{
     border-top:0;
     color:var(--muted);
     font-size:8px;
+    font-weight:600;
+    background:#1a1d1f;
+    padding:12px 2px;
 }
 
 .row small{
@@ -487,6 +551,7 @@ h1{
     border-radius:12px;
     padding:3px 6px;
     font-size:7px;
+    font-weight:600;
 }
 
 .bgreen{
@@ -497,6 +562,16 @@ h1{
 .bred{
     background:#422827;
     color:#e48b83;
+}
+
+.bblue{
+    background:#23344a;
+    color:#78b5d6;
+}
+
+.byellow{
+    background:#4a4023;
+    color:#d4a574;
 }
 
 /* =========================
@@ -514,17 +589,25 @@ h1{
     background:var(--panel2);
     border:1px solid var(--line);
     border-radius:6px;
+    transition:.2s;
+}
+
+.livebox:hover{
+    border-color:var(--gold);
 }
 
 .livebox label{
     font-size:8px;
     color:var(--muted);
+    font-weight:500;
 }
 
 .livebox strong{
     display:block;
     font-size:20px;
     margin-top:5px;
+    color:var(--gold2);
+    font-weight:700;
 }
 
 .staff{
@@ -539,6 +622,13 @@ h1{
     border-radius:20px;
     padding:6px 9px;
     font-size:8px;
+    border:1px solid var(--line);
+    transition:.2s;
+}
+
+.person:hover{
+    background:var(--gold);
+    color:#181b1d;
 }
 
 .alerts{
@@ -555,6 +645,18 @@ h1{
     border-radius:4px;
     font-size:9px;
     line-height:1.5;
+    animation:slideIn .3s ease-out;
+}
+
+@keyframes slideIn{
+    from{
+        opacity:0;
+        transform:translateX(-20px);
+    }
+    to{
+        opacity:1;
+        transform:translateX(0);
+    }
 }
 
 .alert.red{
@@ -563,6 +665,10 @@ h1{
 
 .alert.green{
     border-left-color:var(--green);
+}
+
+.alert.blue{
+    border-left-color:var(--blue);
 }
 
 /* =========================
@@ -580,14 +686,20 @@ h1{
     width:62px;
     height:62px;
     border-radius:50%;
-    border:1px solid var(--gold);
-    background:#24282a;
+    border:2px solid var(--gold);
+    background:linear-gradient(135deg, #24282a, #2a2f32);
     color:var(--gold);
-    box-shadow:0 8px 30px #0008;
+    box-shadow:0 8px 30px rgba(0,0,0,0.5);
     cursor:pointer;
     font-weight:800;
     font-size:20px;
     position:relative;
+    transition:.3s;
+}
+
+.ai-btn:hover{
+    transform:scale(1.1);
+    box-shadow:0 12px 40px rgba(201,161,91,0.3);
 }
 
 .dot{
@@ -599,6 +711,12 @@ h1{
     border-radius:50%;
     background:var(--red);
     border:2px solid #24282a;
+    animation:pulse 2s infinite;
+}
+
+@keyframes pulse{
+    0%,100%{opacity:1;}
+    50%{opacity:0.5;}
 }
 
 .ai-panel{
@@ -609,13 +727,27 @@ h1{
     background:#202426;
     border:1px solid var(--line);
     border-radius:9px;
-    box-shadow:0 15px 45px #0009;
+    box-shadow:0 15px 45px rgba(0,0,0,0.6);
     display:none;
     overflow:hidden;
+    flex-direction:column;
+    max-height:400px;
 }
 
 .ai-panel.show{
-    display:block;
+    display:flex;
+    animation:slideUp .3s ease-out;
+}
+
+@keyframes slideUp{
+    from{
+        opacity:0;
+        transform:translateY(20px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
 }
 
 .ai-head{
@@ -623,18 +755,22 @@ h1{
     border-bottom:1px solid var(--line);
     display:flex;
     justify-content:space-between;
+    align-items:center;
+    flex-shrink:0;
 }
 
 .ai-head strong{
     color:var(--gold2);
+    font-weight:700;
 }
 
 .ai-body{
     padding:14px;
     font-size:10px;
     line-height:1.6;
-    max-height:300px;
-    overflow:auto;
+    max-height:250px;
+    overflow-y:auto;
+    flex:1;
 }
 
 .ai-msg{
@@ -642,6 +778,14 @@ h1{
     background:#292e31;
     border-radius:6px;
     margin-bottom:7px;
+    border-left:2px solid var(--gold);
+}
+
+.ai-msg.user{
+    background:var(--gold);
+    color:#181b1d;
+    border-left-color:var(--gold2);
+    font-weight:500;
 }
 
 .ai-input{
@@ -649,6 +793,7 @@ h1{
     gap:6px;
     padding:10px;
     border-top:1px solid var(--line);
+    flex-shrink:0;
 }
 
 .ai-input input{
@@ -656,16 +801,30 @@ h1{
     background:#16191a;
     border:1px solid var(--line);
     border-radius:5px;
-    padding:8px;
+    padding:8px 10px;
     color:white;
     font-size:9px;
+    transition:.2s;
+}
+
+.ai-input input:focus{
+    outline:none;
+    border-color:var(--gold);
 }
 
 .ai-input button{
     background:var(--gold);
     border:0;
     border-radius:5px;
-    padding:0 10px;
+    padding:0 12px;
+    font-size:9px;
+    font-weight:700;
+    cursor:pointer;
+    transition:.2s;
+}
+
+.ai-input button:hover{
+    background:var(--gold2);
 }
 
 /* =========================
@@ -678,6 +837,8 @@ h1{
     padding:8px 12px;
     font-size:9px;
     cursor:pointer;
+    transition:.2s;
+    font-weight:600;
 }
 
 .btn.dark{
@@ -685,10 +846,38 @@ h1{
     color:white;
 }
 
+.btn.dark:hover{
+    background:#3f454a;
+}
+
 .btn.gold{
     background:var(--gold);
     color:#17191a;
     font-weight:700;
+}
+
+.btn.gold:hover{
+    background:var(--gold2);
+    transform:translateY(-2px);
+    box-shadow:0 4px 12px rgba(201,161,91,0.3);
+}
+
+.btn.red{
+    background:var(--red);
+    color:white;
+}
+
+.btn.red:hover{
+    background:#e07a72;
+}
+
+.btn.green{
+    background:var(--green);
+    color:white;
+}
+
+.btn.green:hover{
+    background:#73c48b;
 }
 
 /* =========================
@@ -701,11 +890,17 @@ h1{
     gap:8px;
 }
 
+.filter{
+    display:flex;
+    flex-direction:column;
+}
+
 .filter label{
     display:block;
     font-size:8px;
     color:var(--muted);
     margin-bottom:4px;
+    font-weight:500;
 }
 
 .filter input,
@@ -716,14 +911,23 @@ h1{
     border:1px solid var(--line);
     border-radius:5px;
     color:#eee;
-    padding:6px;
+    padding:6px 8px;
     font-size:9px;
+    transition:.2s;
+}
+
+.filter input:focus,
+.filter select:focus{
+    outline:none;
+    border-color:var(--gold);
+    background:#202426;
 }
 
 .periods{
     display:flex;
     gap:5px;
     margin-top:10px;
+    flex-wrap:wrap;
 }
 
 .periods button{
@@ -734,12 +938,20 @@ h1{
     padding:6px 9px;
     font-size:8px;
     cursor:pointer;
+    transition:.2s;
+    font-weight:500;
+}
+
+.periods button:hover{
+    border-color:var(--gold);
+    color:var(--gold);
 }
 
 .periods button.active{
     background:var(--gold);
     color:#181b1d;
     border-color:var(--gold);
+    font-weight:700;
 }
 
 .summary{
@@ -756,15 +968,22 @@ h1{
 .modal-bg{
     position:fixed;
     inset:0;
-    background:#000b;
+    background:rgba(0,0,0,0.7);
     display:none;
     align-items:center;
     justify-content:center;
     z-index:100;
+    backdrop-filter:blur(2px);
 }
 
 .modal-bg.show{
     display:flex;
+    animation:fadeIn .2s ease-out;
+}
+
+@keyframes fadeIn{
+    from{opacity:0;}
+    to{opacity:1;}
 }
 
 .modal{
@@ -773,6 +992,19 @@ h1{
     background:#202426;
     border:1px solid var(--line);
     border-radius:8px;
+    box-shadow:0 20px 60px rgba(0,0,0,0.8);
+    animation:modalSlide .3s ease-out;
+}
+
+@keyframes modalSlide{
+    from{
+        opacity:0;
+        transform:scale(0.95);
+    }
+    to{
+        opacity:1;
+        transform:scale(1);
+    }
 }
 
 .mh{
@@ -780,15 +1012,19 @@ h1{
     border-bottom:1px solid var(--line);
     display:flex;
     justify-content:space-between;
+    align-items:center;
 }
 
 .mh h2{
     font-size:15px;
     margin:0;
+    font-weight:700;
 }
 
 .mb{
     padding:16px;
+    max-height:60vh;
+    overflow-y:auto;
 }
 
 .form{
@@ -800,10 +1036,12 @@ h1{
 .form label{
     font-size:8px;
     color:var(--muted);
+    font-weight:500;
 }
 
 .form input,
-.form select{
+.form select,
+.form textarea{
     width:100%;
     margin-top:4px;
     height:35px;
@@ -811,7 +1049,26 @@ h1{
     border:1px solid var(--line);
     color:white;
     border-radius:5px;
-    padding:6px;
+    padding:6px 8px;
+    font-size:9px;
+    transition:.2s;
+}
+
+.form textarea{
+    height:60px;
+    resize:vertical;
+}
+
+.form input:focus,
+.form select:focus,
+.form textarea:focus{
+    outline:none;
+    border-color:var(--gold);
+    background:#1a1d1f;
+}
+
+.form.full{
+    grid-template-columns:1fr;
 }
 
 .mf{
@@ -822,12 +1079,33 @@ h1{
     border-top:1px solid var(--line);
 }
 
+.success-message{
+    padding:12px 16px;
+    background:#23392b;
+    border-left:3px solid var(--green);
+    border-radius:4px;
+    color:var(--green);
+    font-size:9px;
+    margin-bottom:10px;
+    animation:slideIn .3s ease-out;
+}
+
+.error-message{
+    padding:12px 16px;
+    background:#422827;
+    border-left:3px solid var(--red);
+    border-radius:4px;
+    color:var(--red);
+    font-size:9px;
+    margin-bottom:10px;
+    animation:slideIn .3s ease-out;
+}
+
 /* =========================
    RESPONSIVE
 ========================= */
 
 @media(max-width:1100px){
-
     .kpis,
     .month,
     .targets{
@@ -841,10 +1119,13 @@ h1{
     .live{
         grid-template-columns:repeat(2,1fr);
     }
+
+    .invgrid{
+        grid-template-columns:repeat(2,1fr);
+    }
 }
 
 @media(max-width:750px){
-
     .sidebar{
         width:72px;
     }
@@ -891,6 +1172,26 @@ h1{
     .alerts{
         grid-template-columns:1fr;
     }
+
+    .live{
+        grid-template-columns:1fr;
+    }
+
+    .invgrid{
+        grid-template-columns:1fr;
+    }
+
+    .form{
+        grid-template-columns:1fr;
+    }
+
+    .modal{
+        width:90%;
+    }
+
+    .row{
+        grid-template-columns:1fr;
+    }
 }
 </style>
 </head>
@@ -902,26 +1203,17 @@ h1{
 ================================== -->
 
 <aside class="sidebar" id="sidebar">
-
     <div class="brand">
-
-        <div class="brandmark">
-            G
-        </div>
-
+        <div class="brandmark">G</div>
         <div class="brandname">
             Gastro<span>360</span>
-            <small>CONTROL GASTRONÓMICO</small>
+            <small>PREMIUM</small>
         </div>
-
     </div>
 
-    <button class="toggle" onclick="toggleSide()">
-        ☰
-    </button>
+    <button class="toggle" id="toggleBtn" title="Contraer menú">☰</button>
 
     <nav class="nav" id="nav"></nav>
-
 </aside>
 
 
@@ -932,41 +1224,22 @@ h1{
 <main class="main">
 
 <header class="top">
-
     <div class="search">
-
         ⌕
-
         <input
             id="globalSearch"
             placeholder="Buscar en Gastro360..."
-            oninput="searchTable()">
-
+            onkeydown="handleGlobalSearch(event)">
     </div>
 
     <div class="topright">
-
-        <span>
-            ● Sistema operativo
-        </span>
-
-        <span class="avatar">
-            ER
-        </span>
-
-        <span>
-            Administrador
-        </span>
-
+        <span>● Sistema operativo</span>
+        <span class="avatar" id="avatarUser" title="Administrador">ER</span>
+        <span id="userRole">Administrador</span>
     </div>
-
 </header>
 
-
-<section
-    class="content"
-    id="app">
-</section>
+<section class="content" id="app"></section>
 
 </main>
 
@@ -976,85 +1249,32 @@ h1{
 ================================== -->
 
 <div class="ai">
-
-    <div
-        class="ai-panel"
-        id="aiPanel">
-
+    <div class="ai-panel" id="aiPanel">
         <div class="ai-head">
-
-            <strong>
-                GastroIA
-            </strong>
-
-            <button
-                class="btn dark"
-                onclick="toggleAI()">
-                ×
-            </button>
-
+            <strong>GastroIA</strong>
+            <button class="btn dark" id="closeAIBtn" title="Cerrar GastroIA">×</button>
         </div>
 
-        <div
-            class="ai-body"
-            id="aiBody">
-
+        <div class="ai-body" id="aiBody">
             <div class="ai-msg">
-
-                <b>Alerta:</b>
-
-                Detecté una diferencia de
-                18 unidades en barra.
-
+                <b>Bienvenida:</b><br>
+                Estoy aquí para ayudarte a optimizar tu negocio gastronómico.
             </div>
-
-            <div class="ai-msg">
-
-                <b>Sugerencia:</b>
-
-                Impulsa Cerveza Corona y
-                Tacos de Arrachera durante
-                las próximas 2 horas.
-
-            </div>
-
-            <div class="ai-msg">
-
-                <b>Operación:</b>
-
-                Cocina tiene 2 comandas
-                con más de 15 minutos.
-
-            </div>
-
         </div>
 
         <div class="ai-input">
-
             <input
                 id="aiInput"
                 placeholder="Pregúntale a GastroIA..."
-                onkeydown="if(event.key==='Enter')askAI()">
-
-            <button onclick="askAI()">
-                Enviar
-            </button>
-
+                onkeydown="handleAIKeydown(event)">
+            <button id="sendAIBtn" title="Enviar mensaje">Enviar</button>
         </div>
-
     </div>
 
-
-    <button
-        class="ai-btn"
-        onclick="toggleAI()">
-
+    <button class="ai-btn" id="aiBtn" title="Abrir GastroIA">
         G
-
         <span class="dot"></span>
-
     </button>
-
 </div>
 
 
@@ -1062,2112 +1282,176 @@ h1{
      MODAL NUEVA VENTA
 ================================== -->
 
-<div
-    class="modal-bg"
-    id="modal">
-
+<div class="modal-bg" id="modalVenta">
     <div class="modal">
-
         <div class="mh">
-
-            <h2>
-                Nueva operación · Venta
-            </h2>
-
-            <button
-                class="btn dark"
-                onclick="closeModal()">
-                ×
-            </button>
-
+            <h2>Nueva operación · Venta</h2>
+            <button class="btn dark" id="closeVentaModal" title="Cerrar">×</button>
         </div>
 
         <div class="mb">
-
+            <div id="ventaMessage"></div>
             <div class="form">
-
                 <label>
-
                     Mesa
-
                     <select id="mesa">
-
+                        <option>Mesa 01</option>
                         <option>Mesa 04</option>
                         <option>Mesa 08</option>
                         <option>Mesa 12</option>
                         <option>Barra 02</option>
-
                     </select>
-
                 </label>
 
-
                 <label>
-
                     Mesero
-
                     <select id="mesero">
-
                         <option>Andrea López</option>
                         <option>Marco Díaz</option>
                         <option>Sofía Ramírez</option>
                         <option>Daniel Pérez</option>
-
                     </select>
-
                 </label>
 
-
                 <label>
-
                     Forma de pago
-
                     <select id="pago">
-
                         <option>Tarjeta</option>
                         <option>Efectivo</option>
                         <option>Transferencia</option>
-
                     </select>
-
                 </label>
-
 
                 <label>
-
                     Importe
-
-                    <input
-                        id="importe"
-                        type="number"
-                        value="850">
-
+                    <input id="importe" type="number" step="0.01" value="850" min="0">
                 </label>
-
             </div>
-
         </div>
 
         <div class="mf">
-
-            <button
-                class="btn dark"
-                onclick="closeModal()">
-
-                Cancelar
-
-            </button>
-
-            <button
-                class="btn gold"
-                onclick="saveOperation()">
-
-                Registrar venta
-
-            </button>
-
+            <button class="btn dark" id="cancelVentaBtn">Cancelar</button>
+            <button class="btn gold" id="saveVentaBtn">Registrar venta</button>
         </div>
-
     </div>
-
 </div>
 
 
-<script>
+<!-- ==================================
+     MODAL NUEVA COMANDA
+================================== -->
 
-/* ==================================
-   MÓDULOS
-================================== */
-
-const modules = [
-
-    ["Dashboard","⌂"],
-    ["Ventas","$"],
-    ["Caja","▣"],
-    ["Salón y Mesas","◫"],
-    ["Comandas","≡"],
-    ["Cocina","♨"],
-    ["Barra","◉"],
-    ["Compras","▾"],
-    ["Inventarios","□"],
-    ["Requisiciones","↔"],
-    ["Kardex","▤"],
-    ["Reportes","⌁"],
-    ["Clientes","♙"],
-    ["IA","✦"],
-    ["Configuración","⚙"]
-
-];
-
-
-/* ==================================
-   ESTADO
-================================== */
-
-let active = "Dashboard";
-
-
-/* ==================================
-   DATOS DEMO DE VENTAS
-================================== */
-
-let sales = [
-
-    [
-        "V-1042",
-        "30/08/2026",
-        "14:12",
-        "Mesa 08",
-        "Andrea López",
-        6,
-        1299.20,
-        "Tarjeta"
-    ],
-
-    [
-        "V-1041",
-        "30/08/2026",
-        "13:54",
-        "Mesa 04",
-        "Marco Díaz",
-        8,
-        1856,
-        "Efectivo"
-    ],
-
-    [
-        "V-1040",
-        "30/08/2026",
-        "13:32",
-        "Barra 02",
-        "Sofía Ramírez",
-        4,
-        881.60,
-        "Tarjeta"
-    ],
-
-    [
-        "V-1039",
-        "30/08/2026",
-        "13:06",
-        "Mesa 12",
-        "Daniel Pérez",
-        10,
-        2598.40,
-        "Transferencia"
-    ],
-
-    [
-        "V-1038",
-        "30/08/2026",
-        "12:47",
-        "Mesa 03",
-        "Andrea López",
-        5,
-        1090.40,
-        "Tarjeta"
-    ]
-
-];
-
-
-/* ==================================
-   FORMATO MONEDA
-================================== */
-
-function money(number){
-
-    return number.toLocaleString(
-        "es-MX",
-        {
-            style:"currency",
-            currency:"MXN"
-        }
-    );
-
-}
-
-
-/* ==================================
-   MENÚ
-================================== */
-
-function buildNav(){
-
-    document.getElementById("nav").innerHTML =
-
-    modules.map(module => `
-
-        <button
-            class="${active === module[0] ? "active" : ""}"
-            onclick="
-                active='${module[0]}';
-                buildNav();
-                render();
-            "
-        >
-
-            <span class="ico">
-                ${module[1]}
-            </span>
-
-            <span>
-                ${module[0]}
-            </span>
-
-        </button>
-
-    `).join("");
-
-}
-
-
-/* ==================================
-   SIDEBAR
-================================== */
-
-function toggleSide(){
-
-    document
-        .getElementById("sidebar")
-        .classList
-        .toggle("collapsed");
-
-}
-
-
-/* ==================================
-   KPI
-================================== */
-
-function kpi(
-    title,
-    value,
-    change="▲ 8.4% vs periodo anterior"
-){
-
-    return `
-
-        <div class="kpi">
-
-            <label>
-                ${title}
-            </label>
-
-            <strong>
-                ${value}
-            </strong>
-
-            <div class="trend">
-                ${change}
-            </div>
-
+<div class="modal-bg" id="modalComanda">
+    <div class="modal">
+        <div class="mh">
+            <h2>Nueva comanda</h2>
+            <button class="btn dark" id="closeComandaModal" title="Cerrar">×</button>
         </div>
 
-    `;
+        <div class="mb">
+            <div id="comandaMessage"></div>
+            <div class="form">
+                <label>
+                    Mesa
+                    <select id="comMesa">
+                        <option>Mesa 01</option>
+                        <option>Mesa 04</option>
+                        <option>Mesa 08</option>
+                        <option>Mesa 12</option>
+                    </select>
+                </label>
 
-}
+                <label>
+                    Área
+                    <select id="comArea">
+                        <option>Cocina</option>
+                        <option>Barra</option>
+                    </select>
+                </label>
 
+                <label class="form-full">
+                    Descripción
+                    <textarea id="comDescripcion" placeholder="Detalle de la comanda..."></textarea>
+                </label>
 
-/* ==================================
-   META
-================================== */
-
-function target(
-    title,
-    meta,
-    alcance,
-    porcentaje
-){
-
-    return `
-
-        <div class="target">
-
-            <div class="target-top">
-
-                <span>
-                    ${title}
-                </span>
-
-                <b>
-                    ${porcentaje}%
-                </b>
-
+                <label>
+                    Prioridad
+                    <select id="comPriority">
+                        <option>Normal</option>
+                        <option>Alta</option>
+                        <option>Baja</option>
+                    </select>
+                </label>
             </div>
-
-            <strong>
-                ${money(alcance)}
-            </strong>
-
-            <div class="progress">
-
-                <i
-                    style="
-                        width:${Math.min(
-                            porcentaje,
-                            100
-                        )}%
-                    ">
-                </i>
-
-            </div>
-
-            <small>
-
-                Meta:
-                ${money(meta)}
-
-                ·
-
-                Faltan:
-                ${money(
-                    Math.max(
-                        meta-alcance,
-                        0
-                    )
-                )}
-
-            </small>
-
         </div>
 
-    `;
-
-}
-
-
-/* ==================================
-   DASHBOARD
-================================== */
-
-function dashboard(){
-
-    return `
-
-    <div class="head">
-
-        <div>
-
-            <div class="eyebrow">
-                GASTRO360 · CONTROL INTEGRAL
-            </div>
-
-            <h1>
-                Dashboard
-            </h1>
-
-            <div class="sub">
-                Visión ejecutiva y operativa
-                de tu negocio en tiempo real
-            </div>
-
+        <div class="mf">
+            <button class="btn dark" id="cancelComandaBtn">Cancelar</button>
+            <button class="btn gold" id="saveComandaBtn">Crear comanda</button>
         </div>
-
-        <div class="date">
-            30 de agosto de 2026 · Hoy
-        </div>
-
     </div>
+</div>
 
 
-    <!-- ==========================
-         OPERACIÓN DEL DÍA
-    =========================== -->
+<!-- ==================================
+     MODAL MOVIMIENTO INVENTARIO
+================================== -->
 
-    <div class="section">
-
-        <div class="section-title">
-
-            <h2>
-                Operación del día
-            </h2>
-
-            <span>
-                Actualizado hace unos segundos
-            </span>
-
+<div class="modal-bg" id="modalInventario">
+    <div class="modal">
+        <div class="mh">
+            <h2>Movimiento de inventario</h2>
+            <button class="btn dark" id="closeInventarioModal" title="Cerrar">×</button>
         </div>
 
+        <div class="mb">
+            <div id="inventarioMessage"></div>
+            <div class="form">
+                <label>
+                    Producto
+                    <select id="invProducto">
+                        <option>Cerveza Corona</option>
+                        <option>Cerveza Victoria</option>
+                        <option>Tequila Blanco</option>
+                        <option>Limón</option>
+                        <option>Sal</option>
+                    </select>
+                </label>
 
-        <div class="kpis">
+                <label>
+                    Tipo de movimiento
+                    <select id="invTipo">
+                        <option>Entrada</option>
+                        <option>Salida</option>
+                    </select>
+                </label>
 
-            ${kpi(
-                "Ventas del día",
-                "$28,450",
-                "▲ 12.8%"
-            )}
+                <label>
+                    Cantidad
+                    <input id="invCantidad" type="number" step="1" value="1" min="1">
+                </label>
 
-            ${kpi(
-                "Compras del día",
-                "$9,860",
-                "▲ 4.2%"
-            )}
-
-            ${kpi(
-                "Utilidad del día",
-                "$9,964",
-                "▲ 8.4%"
-            )}
-
-            ${kpi(
-                "Packs del día",
-                "142",
-                "▲ 11.6%"
-            )}
-
-            ${kpi(
-                "Ticket promedio",
-                "$642",
-                "▲ 5.7%"
-            )}
-
+                <label>
+                    Motivo
+                    <select id="invMotivo">
+                        <option>Compra</option>
+                        <option>Uso</option>
+                        <option>Devolución</option>
+                        <option>Ajuste</option>
+                    </select>
+                </label>
+            </div>
         </div>
 
+        <div class="mf">
+            <button class="btn dark" id="cancelInventarioBtn">Cancelar</button>
+            <button class="btn gold" id="saveInventarioBtn">Registrar movimiento</button>
+        </div>
     </div>
+</div>
 
 
-    <!-- ==========================
-         ACUMULADOS DEL MES
-    =========================== -->
+<script src="app.js"></script>
 
-    <div class="section">
-
-        <div class="section-title">
-
-            <h2>
-                Acumulados del mes
-            </h2>
-
-            <span>
-                Agosto 2026
-            </span>
-
-        </div>
-
-
-        <div class="month">
-
-            ${kpi(
-                "Ventas del mes",
-                "$684,920",
-                "▲ 9.8%"
-            )}
-
-            ${kpi(
-                "Compras del mes",
-                "$241,680",
-                "▲ 5.1%"
-            )}
-
-            ${kpi(
-                "Utilidad del mes",
-                "$239,644",
-                "▲ 11.3%"
-            )}
-
-            ${kpi(
-                "Packs del mes",
-                "3,486",
-                "▲ 7.9%"
-            )}
-
-            ${kpi(
-                "Ticket promedio",
-                "$658",
-                "▲ 4.6%"
-            )}
-
-        </div>
-
-    </div>
-
-
-    <!-- ==========================
-         METAS
-    =========================== -->
-
-    <div class="section">
-
-        <div class="section-title">
-
-            <h2>
-                Metas y proyección del mes
-            </h2>
-
-            <span>
-                Avance acumulado
-            </span>
-
-        </div>
-
-
-        <div class="targets">
-
-            ${target(
-                "Ventas",
-                800000,
-                684920,
-                86
-            )}
-
-            ${target(
-                "Compras",
-                300000,
-                241680,
-                81
-            )}
-
-            ${target(
-                "Utilidad",
-                280000,
-                239644,
-                86
-            )}
-
-            ${target(
-                "Packs",
-                4200,
-                3486,
-                83
-            )}
-
-            ${target(
-                "Ticket promedio",
-                700,
-                658,
-                94
-            )}
-
-        </div>
-
-    </div>
-
-
-    <!-- ==========================
-         INVENTARIOS
-    =========================== -->
-
-    <div class="section">
-
-        <div class="section-title">
-
-            <h2>
-                Inventarios
-            </h2>
-
-            <span>
-                Existencias, riesgos y diferencias
-            </span>
-
-        </div>
-
-
-        <div class="card">
-
-            <div class="invgrid">
-
-                <div class="mini">
-
-                    <label>
-                        Inventario en sistema
-                    </label>
-
-                    <strong>
-                        $184,620
-                    </strong>
-
-                    <small class="ok">
-                        ● Valuación actual
-                    </small>
-
-                </div>
-
-
-                <div class="mini">
-
-                    <label>
-                        Productos en riesgo
-                    </label>
-
-                    <strong class="risk">
-                        12
-                    </strong>
-
-                    <small class="risk">
-                        ● Requieren atención
-                    </small>
-
-                </div>
-
-
-                <div class="mini">
-
-                    <label>
-                        Faltantes detectados
-                    </label>
-
-                    <strong class="risk">
-                        18
-                    </strong>
-
-                    <small class="risk">
-                        ● Diferencias de conteo
-                    </small>
-
-                </div>
-
-
-                <div class="mini">
-
-                    <label>
-                        Rotación alta
-                    </label>
-
-                    <strong>
-                        27
-                    </strong>
-
-                    <small class="ok">
-                        ● Productos activos
-                    </small>
-
-                </div>
-
-            </div>
-
-
-            <div class="table">
-
-                <div class="row header">
-
-                    <span>
-                        Producto
-                    </span>
-
-                    <span>
-                        Área
-                    </span>
-
-                    <span>
-                        Existencia
-                    </span>
-
-                    <span>
-                        Estado
-                    </span>
-
-                </div>
-
-
-                <div class="row">
-
-                    <span>
-                        Cerveza Corona
-                    </span>
-
-                    <span>
-                        Barra
-                    </span>
-
-                    <span>
-                        148
-                    </span>
-
-                    <span>
-                        <b class="badge bgreen">
-                            Normal
-                        </b>
-                    </span>
-
-                </div>
-
-
-                <div class="row">
-
-                    <span>
-                        Cerveza Victoria
-                    </span>
-
-                    <span>
-                        Barra
-                    </span>
-
-                    <span>
-                        96
-                    </span>
-
-                    <span>
-                        <b class="badge bgreen">
-                            Normal
-                        </b>
-                    </span>
-
-                </div>
-
-
-                <div class="row">
-
-                    <span>
-                        Tequila Blanco
-                    </span>
-
-                    <span>
-                        Barra
-                    </span>
-
-                    <span>
-                        18
-                    </span>
-
-                    <span>
-                        <b class="badge bred">
-                            Riesgo
-                        </b>
-                    </span>
-
-                </div>
-
-
-                <div class="row">
-
-                    <span>
-                        Limón
-                    </span>
-
-                    <span>
-                        Cocina
-                    </span>
-
-                    <span>
-                        8
-                    </span>
-
-                    <span>
-                        <b class="badge bred">
-                            Bajo
-                        </b>
-                    </span>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-
-    <!-- ==========================
-         VISIÓN EN VIVO
-    =========================== -->
-
-    <div class="section">
-
-        <div class="section-title">
-
-            <h2>
-                Visión en vivo del negocio
-            </h2>
-
-            <span>
-                Estado operativo actual
-            </span>
-
-        </div>
-
-
-        <div class="card">
-
-            <div class="live">
-
-                <div class="livebox">
-
-                    <label>
-                        Personas en el negocio
-                    </label>
-
-                    <strong>
-                        86
-                    </strong>
-
-                    <small class="ok">
-                        ● En operación
-                    </small>
-
-                </div>
-
-
-                <div class="livebox">
-
-                    <label>
-                        Mesas disponibles
-                    </label>
-
-                    <strong>
-                        6 / 24
-                    </strong>
-
-                    <small>
-                        18 ocupadas
-                    </small>
-
-                </div>
-
-
-                <div class="livebox">
-
-                    <label>
-                        Comandas activas
-                    </label>
-
-                    <strong>
-                        17
-                    </strong>
-
-                    <small>
-                        9 cocina · 8 barra
-                    </small>
-
-                </div>
-
-
-                <div class="livebox">
-
-                    <label>
-                        Servicio
-                    </label>
-
-                    <strong class="ok">
-                        Normal
-                    </strong>
-
-                    <small>
-                        Tiempo medio 12 min
-                    </small>
-
-                </div>
-
-            </div>
-
-
-            <div style="margin-top:14px">
-
-                <b style="font-size:10px">
-                    Personal en turno
-                </b>
-
-
-                <div class="staff">
-
-                    <span class="person">
-                        Andrea López · Mesero
-                    </span>
-
-                    <span class="person">
-                        Marco Díaz · Mesero
-                    </span>
-
-                    <span class="person">
-                        Sofía Ramírez · Barra
-                    </span>
-
-                    <span class="person">
-                        Daniel Pérez · Cocina
-                    </span>
-
-                    <span class="person">
-                        Luis Méndez · Caja
-                    </span>
-
-                </div>
-
-            </div>
-
-
-            <div class="alerts">
-
-                <div class="alert red">
-
-                    <b>⚠ Cocina:</b>
-
-                    2 comandas superan
-                    15 minutos.
-
-                </div>
-
-
-                <div class="alert">
-
-                    <b>● Barra:</b>
-
-                    Diferencia de
-                    18 unidades detectada.
-
-                </div>
-
-
-                <div class="alert green">
-
-                    <b>✓ Oportunidad:</b>
-
-                    Cerveza Corona tiene
-                    alta rotación.
-
-                </div>
-
-
-                <div class="alert">
-
-                    <b>→ Impulsar:</b>
-
-                    Tacos de Arrachera y
-                    bebidas de barra.
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-    `;
-
-}
-/* =========================================================
-   PARTE 2 — GASTRO360
-   VENTAS + FILTROS + ACUMULADOS + NUEVA OPERACIÓN + GASTROIA
-========================================================= */
-
-
-/* ---------- RENDER GENERAL ---------- */
-
-function render(){
-
-    const app = document.getElementById("app");
-
-    if(!app) return;
-
-    if(active === "Dashboard"){
-        app.innerHTML = dashboard();
-        return;
-    }
-
-    if(active === "Ventas"){
-        app.innerHTML = ventas();
-        return;
-    }
-
-    app.innerHTML = moduloGenerico(active);
-}
-
-
-/* ---------- MÓDULOS ---------- */
-
-function moduloGenerico(nombre){
-
-    return `
-        <div class="head">
-
-            <div>
-                <div class="eyebrow">
-                    GASTRO360 · ${nombre.toUpperCase()}
-                </div>
-
-                <h1>${nombre}</h1>
-
-                <div class="sub">
-                    Gestión integral de ${nombre.toLowerCase()}.
-                </div>
-            </div>
-
-        </div>
-
-        <div class="section">
-
-            <div class="card">
-
-                <h2>${nombre}</h2>
-
-                <p>
-                    Módulo preparado para integrarse
-                    con la operación de Gastro360.
-                </p>
-
-                <button
-                    class="btn gold"
-                    onclick="showDemo('${nombre}')">
-
-                    Abrir módulo
-
-                </button>
-
-            </div>
-
-        </div>
-    `;
-}
-
-
-/* =========================================================
-   VENTAS
-========================================================= */
-
-function ventas(){
-
-    const total = sales.reduce(
-        (sum,row) => sum + Number(row[6] || 0),
-        0
-    );
-
-    const packs = sales.reduce(
-        (sum,row) => sum + Number(row[5] || 0),
-        0
-    );
-
-    const ticket = sales.length
-        ? total / sales.length
-        : 0;
-
-
-    return `
-
-        <div class="head">
-
-            <div>
-
-                <div class="eyebrow">
-                    GASTRO360 · CONTROL COMERCIAL
-                </div>
-
-                <h1>Ventas</h1>
-
-                <div class="sub">
-                    Consulta y analiza las ventas
-                    por fecha, periodo, mesa y forma de pago.
-                </div>
-
-            </div>
-
-            <button
-                class="btn gold"
-                onclick="openModal()">
-
-                + Nueva operación
-
-            </button>
-
-        </div>
-
-
-        <!-- FILTROS -->
-
-        <div class="section">
-
-            <div class="card">
-
-                <div class="section-title">
-
-                    <div>
-
-                        <h2>
-                            Buscar operaciones
-                        </h2>
-
-                        <span>
-                            Consulta por fecha o periodo
-                        </span>
-
-                    </div>
-
-                </div>
-
-
-                <div class="filters">
-
-                    <div class="filter">
-
-                        <label>
-                            Desde
-                        </label>
-
-                        <input
-                            type="date"
-                            id="dateFrom"
-                            value="2026-08-01"
-                            onchange="filterSales()">
-
-                    </div>
-
-
-                    <div class="filter">
-
-                        <label>
-                            Hasta
-                        </label>
-
-                        <input
-                            type="date"
-                            id="dateTo"
-                            value="2026-08-30"
-                            onchange="filterSales()">
-
-                    </div>
-
-
-                    <div class="filter">
-
-                        <label>
-                            Forma de pago
-                        </label>
-
-                        <select
-                            id="paymentFilter"
-                            onchange="filterSales()">
-
-                            <option value="">
-                                Todas
-                            </option>
-
-                            <option value="Efectivo">
-                                Efectivo
-                            </option>
-
-                            <option value="Tarjeta">
-                                Tarjeta
-                            </option>
-
-                            <option value="Transferencia">
-                                Transferencia
-                            </option>
-
-                        </select>
-
-                    </div>
-
-
-                    <div class="filter">
-
-                        <label>
-                            Área
-                        </label>
-
-                        <select
-                            id="areaFilter"
-                            onchange="filterSales()">
-
-                            <option value="">
-                                Todas
-                            </option>
-
-                            <option value="Salon">
-                                Salón
-                            </option>
-
-                            <option value="Barra">
-                                Barra
-                            </option>
-
-                        </select>
-
-                    </div>
-
-
-                    <div class="filter">
-
-                        <label>
-                            Buscar
-                        </label>
-
-                        <input
-                            type="text"
-                            id="salesSearch"
-                            placeholder="Folio, mesa o mesero..."
-                            oninput="filterSales()">
-
-                    </div>
-
-                </div>
-
-
-                <!-- PERIODOS RÁPIDOS -->
-
-                <div class="periods">
-
-                    <button
-                        class="active"
-                        onclick="period('today',this)">
-
-                        Hoy
-
-                    </button>
-
-                    <button
-                        onclick="period('yesterday',this)">
-
-                        Ayer
-
-                    </button>
-
-                    <button
-                        onclick="period('week',this)">
-
-                        Esta semana
-
-                    </button>
-
-                    <button
-                        onclick="period('month',this)">
-
-                        Este mes
-
-                    </button>
-
-                    <button
-                        onclick="clearSalesFilters()">
-
-                        Limpiar
-
-                    </button>
-
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <!-- ACUMULADOS -->
-
-        <div class="section">
-
-            <div class="section-title">
-
-                <div>
-
-                    <h2>
-                        Acumulados del periodo
-                    </h2>
-
-                    <span id="periodLabel">
-                        01 ago — 30 ago 2026
-                    </span>
-
-                </div>
-
-            </div>
-
-
-            <div
-                class="summary"
-                id="salesSummary">
-
-                ${kpi(
-                    "Ventas acumuladas",
-                    money(total)
-                )}
-
-                ${kpi(
-                    "Operaciones",
-                    sales.length
-                )}
-
-                ${kpi(
-                    "Packs",
-                    packs
-                )}
-
-                ${kpi(
-                    "Ticket promedio",
-                    money(ticket)
-                )}
-
-            </div>
-
-        </div>
-
-
-        <!-- DESGLOSE -->
-
-        <div class="section">
-
-            <div class="section-title">
-
-                <div>
-
-                    <h2>
-                        Desglose de cuentas
-                    </h2>
-
-                    <span>
-                        Operaciones registradas
-                    </span>
-
-                </div>
-
-            </div>
-
-
-            <div class="card">
-
-                <div class="table">
-
-                    <div class="row header">
-
-                        <span>
-                            Operación
-                        </span>
-
-                        <span>
-                            Fecha / hora
-                        </span>
-
-                        <span>
-                            Mesa / área
-                        </span>
-
-                        <span>
-                            Importe
-                        </span>
-
-                    </div>
-
-
-                    <div id="salesRows">
-
-                        ${salesRows(sales)}
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    `;
-}
-
-
-/* =========================================================
-   FILAS
-========================================================= */
-
-function salesRows(data){
-
-    if(!data.length){
-
-        return `
-            <div
-                style="
-                    padding:35px;
-                    text-align:center;
-                    color:#888;
-                ">
-
-                No existen operaciones
-                para este periodo.
-
-            </div>
-        `;
-    }
-
-
-    return data.map(row => `
-
-        <div class="row">
-
-            <span>
-
-                <b>
-                    ${row[0] || "—"}
-                </b>
-
-                <small>
-                    ${row[7] || ""}
-                </small>
-
-            </span>
-
-
-            <span>
-
-                ${row[1] || "—"}
-
-                <small>
-                    ${row[2] || ""}
-                </small>
-
-            </span>
-
-
-            <span>
-
-                ${row[3] || "—"}
-
-                <small>
-                    ${row[4] || ""}
-                </small>
-
-            </span>
-
-
-            <span>
-
-                <b>
-                    ${money(row[6] || 0)}
-                </b>
-
-                <small>
-                    ${row[5] || 0} packs
-                </small>
-
-            </span>
-
-        </div>
-
-    `).join("");
-}
-
-
-/* =========================================================
-   FILTRAR VENTAS
-========================================================= */
-
-function filterSales(){
-
-    const from =
-        document.getElementById("dateFrom")?.value || "";
-
-    const to =
-        document.getElementById("dateTo")?.value || "";
-
-    const payment =
-        document.getElementById("paymentFilter")?.value || "";
-
-    const area =
-        document.getElementById("areaFilter")?.value || "";
-
-    const search =
-        (
-            document.getElementById("salesSearch")?.value || ""
-        ).toLowerCase();
-
-
-    const filtered = sales.filter(row => {
-
-        const originalDate = row[1] || "";
-
-        const parts = originalDate.split("/");
-
-        let date = originalDate;
-
-        if(parts.length === 3){
-
-            date =
-                `${parts[2]}-${parts[1].padStart(2,"0")}-${parts[0].padStart(2,"0")}`;
-
-        }
-
-
-        const dateOK =
-            (!from || date >= from) &&
-            (!to || date <= to);
-
-
-        const paymentOK =
-            !payment ||
-            String(row[7] || "").toLowerCase() ===
-            payment.toLowerCase();
-
-
-        const areaText =
-            String(row[3] || "").toLowerCase();
-
-
-        const areaOK =
-            !area ||
-            (
-                area === "Barra"
-                ? areaText.includes("barra")
-                : areaText.includes("mesa")
-            );
-
-
-        const searchOK =
-            !search ||
-            row
-                .join(" ")
-                .toLowerCase()
-                .includes(search);
-
-
-        return (
-            dateOK &&
-            paymentOK &&
-            areaOK &&
-            searchOK
-        );
-
-    });
-
-
-    updateSalesView(filtered);
-
-    updatePeriodLabel(from,to);
-}
-
-
-/* =========================================================
-   ACTUALIZAR RESULTADOS
-========================================================= */
-
-function updateSalesView(data){
-
-    const rows =
-        document.getElementById("salesRows");
-
-    if(!rows) return;
-
-
-    rows.innerHTML =
-        salesRows(data);
-
-
-    const total =
-        data.reduce(
-            (sum,row) =>
-                sum + Number(row[6] || 0),
-            0
-        );
-
-
-    const packs =
-        data.reduce(
-            (sum,row) =>
-                sum + Number(row[5] || 0),
-            0
-        );
-
-
-    const ticket =
-        data.length
-            ? total / data.length
-            : 0;
-
-
-    const summary =
-        document.getElementById(
-            "salesSummary"
-        );
-
-
-    if(summary){
-
-        summary.innerHTML = `
-
-            ${kpi(
-                "Ventas acumuladas",
-                money(total)
-            )}
-
-            ${kpi(
-                "Operaciones",
-                data.length
-            )}
-
-            ${kpi(
-                "Packs",
-                packs
-            )}
-
-            ${kpi(
-                "Ticket promedio",
-                money(ticket)
-            )}
-
-        `;
-
-    }
-
-}
-
-
-/* =========================================================
-   ETIQUETA DE PERIODO
-========================================================= */
-
-function updatePeriodLabel(from,to){
-
-    const label =
-        document.getElementById(
-            "periodLabel"
-        );
-
-    if(!label) return;
-
-
-    if(!from && !to){
-
-        label.textContent =
-            "Todas las fechas";
-
-        return;
-
-    }
-
-
-    const format = value => {
-
-        if(!value) return "";
-
-        const p = value.split("-");
-
-        return `${p[2]}/${p[1]}/${p[0]}`;
-
-    };
-
-
-    label.textContent =
-        `${format(from)} — ${format(to)}`;
-
-}
-
-
-/* =========================================================
-   PERIODOS RÁPIDOS
-========================================================= */
-
-function period(type,button){
-
-    document
-        .querySelectorAll(".periods button")
-        .forEach(btn =>
-            btn.classList.remove("active")
-        );
-
-
-    if(button){
-        button.classList.add("active");
-    }
-
-
-    const from =
-        document.getElementById("dateFrom");
-
-    const to =
-        document.getElementById("dateTo");
-
-
-    if(!from || !to) return;
-
-
-    if(type === "today"){
-
-        from.value =
-            "2026-08-30";
-
-        to.value =
-            "2026-08-30";
-
-    }
-
-
-    if(type === "yesterday"){
-
-        from.value =
-            "2026-08-29";
-
-        to.value =
-            "2026-08-29";
-
-    }
-
-
-    if(type === "week"){
-
-        from.value =
-            "2026-08-24";
-
-        to.value =
-            "2026-08-30";
-
-    }
-
-
-    if(type === "month"){
-
-        from.value =
-            "2026-08-01";
-
-        to.value =
-            "2026-08-30";
-
-    }
-
-
-    filterSales();
-
-}
-
-
-/* =========================================================
-   LIMPIAR
-========================================================= */
-
-function clearSalesFilters(){
-
-    document.getElementById(
-        "dateFrom"
-    ).value = "2026-08-01";
-
-
-    document.getElementById(
-        "dateTo"
-    ).value = "2026-08-30";
-
-
-    document.getElementById(
-        "paymentFilter"
-    ).value = "";
-
-
-    document.getElementById(
-        "areaFilter"
-    ).value = "";
-
-
-    document.getElementById(
-        "salesSearch"
-    ).value = "";
-
-
-    document
-        .querySelectorAll(".periods button")
-        .forEach(btn =>
-            btn.classList.remove("active")
-        );
-
-
-    filterSales();
-
-}
-
-
-/* =========================================================
-   NUEVA OPERACIÓN
-========================================================= */
-
-function openModal(){
-
-    const modal =
-        document.getElementById("modal");
-
-    if(modal){
-
-        modal.classList.add("show");
-
-    }
-
-}
-
-
-function closeModal(){
-
-    const modal =
-        document.getElementById("modal");
-
-    if(modal){
-
-        modal.classList.remove("show");
-
-    }
-
-}
-
-
-function saveOperation(){
-
-    const importe =
-        Number(
-            document.getElementById(
-                "importe"
-            )?.value || 0
-        );
-
-
-    if(importe <= 0){
-
-        alert(
-            "Ingresa un importe válido."
-        );
-
-        return;
-
-    }
-
-
-    const mesa =
-        document.getElementById(
-            "mesa"
-        )?.value || "Mesa 01";
-
-
-    const mesero =
-        document.getElementById(
-            "mesero"
-        )?.value || "Mesero";
-
-
-    const pago =
-        document.getElementById(
-            "pago"
-        )?.value || "Efectivo";
-
-
-    const now =
-        new Date();
-
-
-    const time =
-        now.toLocaleTimeString(
-            "es-MX",
-            {
-                hour:"2-digit",
-                minute:"2-digit"
-            }
-        );
-
-
-    const folio =
-        "V-" +
-        (
-            1000 +
-            sales.length +
-            1
-        );
-
-
-    sales.unshift([
-
-        folio,
-
-        "30/08/2026",
-
-        time,
-
-        mesa,
-
-        mesero,
-
-        1,
-
-        importe,
-
-        pago
-
-    ]);
-
-
-    closeModal();
-
-
-    if(active === "Ventas"){
-
-        render();
-
-    }
-
-
-    alert(
-        "Operación registrada correctamente."
-    );
-
-}
-
-
-/* =========================================================
-   GASTROIA — ASISTENTE FLOTANTE
-========================================================= */
-
-function toggleAI(){
-
-    const panel =
-        document.getElementById(
-            "aiPanel"
-        );
-
-    if(panel){
-
-        panel.classList.toggle("show");
-
-    }
-
-}
-
-
-function askAI(){
-
-    const input =
-        document.getElementById(
-            "aiInput"
-        );
-
-
-    const body =
-        document.getElementById(
-            "aiBody"
-        );
-
-
-    if(!input || !body) return;
-
-
-    const text =
-        input.value.trim();
-
-
-    if(!text) return;
-
-
-    body.innerHTML += `
-
-        <div class="ai-msg user">
-
-            ${escapeHTML(text)}
-
-        </div>
-
-    `;
-
-
-    const q =
-        text.toLowerCase();
-
-
-    let answer =
-        "Estoy revisando los indicadores de Gastro360.";
-
-
-    if(
-        q.includes("venta") ||
-        q.includes("ventas")
-    ){
-
-        answer =
-            "Las ventas actuales muestran el comportamiento comercial del periodo seleccionado. Puedes utilizar los filtros de fecha para comparar días, semanas o el acumulado mensual.";
-
-    }
-
-
-    else if(
-        q.includes("inventario")
-    ){
-
-        answer =
-            "Gastro360 puede identificar existencias bajas, productos en riesgo, faltantes y variaciones contra el inventario esperado.";
-
-    }
-
-
-    else if(
-        q.includes("meta")
-    ){
-
-        answer =
-            "La sección de metas permite comparar el objetivo mensual contra el alcance real y visualizar cuánto falta para llegar.";
-
-    }
-
-
-    else if(
-        q.includes("packs")
-    ){
-
-        answer =
-            "Los packs se muestran tanto en el acumulado del periodo como en los indicadores generales del Dashboard.";
-
-    }
-
-
-    body.innerHTML += `
-
-        <div class="ai-msg">
-
-            <b>GastroIA</b>
-
-            <br><br>
-
-            ${answer}
-
-        </div>
-
-    `;
-
-
-    input.value = "";
-
-
-    body.scrollTop =
-        body.scrollHeight;
-
-}
-
-
-/* =========================================================
-   SEGURIDAD DEL TEXTO
-========================================================= */
-
-function escapeHTML(text){
-
-    return String(text)
-        .replaceAll("&","&amp;")
-        .replaceAll("<","&lt;")
-        .replaceAll(">","&gt;")
-        .replaceAll('"',"&quot;")
-        .replaceAll("'","&#039;");
-
-}
-
-
-/* =========================================================
-   DEMO
-========================================================= */
-
-function showDemo(nombre){
-
-    alert(
-        "Módulo " +
-        nombre +
-        " seleccionado."
-    );
-
-}
-
-
-/* =========================================================
-   ESC
-========================================================= */
-
-document.addEventListener(
-    "keydown",
-    function(event){
-
-        if(event.key === "Escape"){
-
-            closeModal();
-
-        }
-
-    }
-);
-
-
-/* =========================================================
-   INICIO
-========================================================= */
-
-buildNav();
-
-render();   
+</body>
+</html>
